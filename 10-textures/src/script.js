@@ -20,7 +20,7 @@ const loadingManager = new THREE.LoadingManager();
 // };
 
 const textureLoader = new THREE.TextureLoader(loadingManager);
-const colorTexture = textureLoader.load("/textures/door/color.jpg");
+const colorTexture = textureLoader.load("/textures/minecraft.png");
 const alphaTexture = textureLoader.load("/textures/door/alpha.jpg");
 const heightTexture = textureLoader.load("/textures/door/height.jpg");
 const normalTexture = textureLoader.load("/textures/door/normal.jpg");
@@ -50,6 +50,10 @@ roughnessTexture.colorSpace = THREE.SRGBColorSpace;
 // colorTexture.center.x = 0.5
 // colorTexture.center.y = 0.5
 
+colorTexture.generateMipmaps = false;
+colorTexture.minFilter = THREE.NearestFilter;
+colorTexture.magFilter = THREE.NearestFilter;
+
 /**
  * Base
  */
@@ -63,7 +67,6 @@ const scene = new THREE.Scene();
  * Object
  */
 const geometry = new THREE.BoxGeometry(1, 1, 1);
-console.log(geometry.attributes.uv);
 const material = new THREE.MeshBasicMaterial({ map: colorTexture });
 const mesh = new THREE.Mesh(geometry, material);
 scene.add(mesh);
