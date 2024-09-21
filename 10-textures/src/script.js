@@ -71,6 +71,11 @@ const material = new THREE.MeshBasicMaterial({ map: colorTexture });
 const mesh = new THREE.Mesh(geometry, material);
 scene.add(mesh);
 
+
+
+
+
+
 /**
  * Sizes
  */
