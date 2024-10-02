@@ -50,8 +50,8 @@ const generateGalaxy = () => {
   const positions = new Float32Array(parameters.count * 3);
   const colors = new Float32Array(parameters.count * 3);
 
-  const colorInside = new THREE.Color(parameters.insdeColor)
-  const colorOutside = new THREE.Color(parameters.outsideColor)
+  const colorInside = new THREE.Color(parameters.insdeColor);
+  const colorOutside = new THREE.Color(parameters.outsideColor);
 
   for (let i = 0; i < parameters.count; i++) {
     const i3 = i * 3;
@@ -60,7 +60,9 @@ const generateGalaxy = () => {
     const spinAngle = radius * parameters.spin;
     const branchAngle =
       ((i % parameters.branches) / parameters.branches) * Math.PI * 2;
-
+    if (i < 20) {
+      console.log(i, branchAngle);
+    }
     const randomX =
       Math.pow(Math.random(), parameters.randomnessPower) *
       (Math.random < 0.5 ? 1 : -1);
@@ -77,7 +79,7 @@ const generateGalaxy = () => {
 
     // Color
     const mixedColor = colorInside.clone();
-    mixedColor.lerp(colorOutside, radius / parameters.radius)
+    mixedColor.lerp(colorOutside, radius / parameters.radius);
     colors[i3] = mixedColor.r;
     colors[i3 + 1] = mixedColor.g;
     colors[i3 + 2] = mixedColor.b;
@@ -210,6 +212,9 @@ const clock = new THREE.Clock();
 const tick = () => {
   const elapsedTime = clock.getElapsedTime();
 
+
+  // light flicker
+  
   // Update controls
   controls.update();
 
