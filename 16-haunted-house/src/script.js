@@ -432,6 +432,7 @@ const timer = new Timer();
 
 const tick = () => {
   // Timer
+  
   timer.update();
   const elapsedTime = timer.getElapsed();
   doorLight.intensity = 1 + 0.5 * Math.sin(Date.now() * 0.01);  // Smooth flicker using sine wave
